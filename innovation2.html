@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Stacking Sticky Sections (wheel)</title>
+<style>
+  html,body{
+    height:100%;
+    margin:0;
+    font-family:Arial, Helvetica, sans-serif;
+    /* keep page content visible but prevent normal page scroll */
+    overflow:hidden;
+    background:#d80c0c;
+    color:#fff;
+  }
+
+  /* regular page content (above/below sections) */
+  .page-content{
+    padding:30px;
+    max-width:900px;
+    margin:0 auto;
+    line-height:1.5;
+  }
+
+  /* full-screen stacked sections */
+  .section{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:50vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:4rem;
+    user-select:none;
+
+    /* start hidden below the viewport */
+    transform: translateY(100%);
+    opacity:0;
+    transition: transform .7s cubic-bezier(.2,.9,.3,1), opacity .5s ease;
+    will-change: transform, opacity;
+  }
+
+  /* visible state (slides into place) */
+  .section.active{
+    transform: translateY(0);
+    opacity:1;
+  }
+
+  /* per-section colors (for demo) */
+  .s1{ background:#1abc9c; }
+  .s2{ background:#3498db; }
+  .s3{ background:#9b59b6; }
+  .s4{ background:#e74c3c; }
+
+  /* small hint - optional */
+  
+
+  /* ensure text behind sections is readable when sections hidden */
+  h3, h2 { color: #ddd; }
+</style>
+</head>
+<body>
+
+<!-- some page content before sections -->
+<div class="page-content">
+  <h3>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Temporibus nesciunt dicta iste sit! Eius quae nostrum veritatis alias molestias iusto optio fugiat! Sed cum necessitatibus molestiae ab eum nemo eaque quia adipisci id, pariatur amet quisquam minima dolorem dicta vitae? Dignissimos, saepe voluptates fugiat alias hic quos nostrum, dolorem doloribus tempora modi molestiae. Minus quos, dolorem vel culpa ipsam expedita rerum veniam quo a, tempora consequatur exercitationem consectetur alias iste fuga eos dignissimos magni iure recusandae provident sequi ducimus. Velit alias dolorem incidunt molestiae libero, repellendus voluptates cumque officiis minima reiciendis, quos natus illo perspiciatis fuga soluta error rerum ab itaque non maxime quisquam nostrum. Ipsum aspernatur explicabo aliquam commodi itaque magnam error ad quidem quasi quam asperiores magni cumque, officia, rerum, praesentium architecto blanditiis? Odit a aut fugiat corporis, ducimus ipsum modi possimus, consectetur reprehenderit esse quia magnam eligendi animi beatae, eius ipsa quis maiores quae. Odit vero eius, dolor totam tempora voluptatum illo praesentium autem ipsa quo dolorem voluptate soluta delectus corporis quibusdam! Atque velit quasi quisquam illum facere veniam, accusantium, dicta illo harum nam consequatur explicabo fugiat incidunt nesciunt nostrum dolorem officia quas quae commodi non vel totam, sit rem. Id, minus ratione! Iste voluptate quo atque minima! Esse repellat unde maiores nemo ducimus, minima id! Accusamus ratione architecto tempora vitae, cum, vero itaque eos unde vel, nulla quod dignissimos consequuntur. Quos, tenetur. Dolorum corporis vitae, reiciendis consequatur quis rem porro voluptas minima eveniet exercitationem quia? Quia, porro. In a unde numquam, labore ea libero magni mollitia. Deserunt quasi non itaque sit pariatur incidunt adipisci exercitationem quos, repellat ad molestiae facilis vitae, culpa deleniti. Cupiditate eligendi culpa harum tempore? Nam tenetur facilis harum molestias error modi non iusto, consequuntur voluptas aut laborum inventore vitae deserunt nobis est accusamus animi perferendis consequatur molestiae optio sunt blanditiis odio. Repellendus laudantium quasi eos libero corporis exercitationem dignissimos consequuntur saepe totam placeat eveniet numquam rem iure quaerat nam iste distinctio nisi, asperiores, sit cupiditate earum mollitia autem possimus dolorum. Ea accusamus temporibus dolores, nostrum perferendis ducimus? Nesciunt, excepturi rerum? Cupiditate nemo illo cum excepturi alias maiores nobis rem doloremque, laudantium iure harum. Exercitationem, magni amet blanditiis illum consequuntur modi. Maxime perspiciatis, eius laudantium praesentium maiores rerum iusto adipisci saepe ab ullam deserunt rem dicta minus officia possimus laborum consectetur! Officiis quas, quis totam sit vero distinctio saepe sint officia itaque laudantium, earum suscipit necessitatibus fugit sequi. Quo minima rerum, ratione ea vero illo dolore provident, quod, labore distinctio consectetur quaerat! Sequi dolorum temporibus alias dolores commodi quasi voluptatum blanditiis tempore aliquam enim ipsam labore magnam unde, iusto et nostrum voluptate nemo earum nihil natus non? Esse, aliquam. Vitae illum accusamus pariatur nulla velit! Dolorum, exercitationem. Nesciunt fugit amet natus repellat non cum, alias soluta maiores neque eaque quam consectetur blanditiis, ratione eligendi repellendus, voluptatem praesentium dolor! Porro quod sit aspernatur maiores alias voluptate officiis, ratione eius atque tenetur odit sequi repudiandae iste ipsam nemo iusto neque at deleniti dolorum saepe error quos reiciendis odio illo? Ratione, nihil laborum impedit quam voluptatibus quidem nobis maxime, et porro dolores, harum assumenda alias animi possimus magnam! Modi aspernatur earum suscipit doloremque doloribus a, delectus incidunt possimus dignissimos fugiat! Inventore architecto nam, iure esse harum est ab quod consectetur quae necessitatibus exercitationem error enim ut veritatis pariatur sapiente molestias minus, voluptatem veniam, nisi vero. Optio ipsam, molestiae delectus nemo illum praesentium cum repellendus ea ipsa est assumenda ducimus cumque, alias quidem facilis consequatur voluptate unde? Fuga magni unde qui aliquam corrupti commodi voluptatum perspiciatis doloribus odio, ducimus tenetur ipsa sed nostrum reprehenderit ipsum cumque quasi blanditiis assumenda, reiciendis rerum! Reiciendis debitis aliquid quis recusandae, reprehenderit dicta quidem! Impedit saepe hic quasi commodi possimus distinctio laboriosam quibusdam odit, eius veniam accusamus tempore repudiandae in fuga eligendi libero rem et aut consequuntur. Maxime laudantium accusamus, modi praesentium provident cupiditate veritatis reprehenderit ipsa rem consequatur tempora quas officia. Dolore, obcaecati soluta enim nemo blanditiis architecto voluptatum labore quidem iusto modi! Assumenda dolores sequi accusantium eaque id! Alias illo quia numquam voluptate tempore, distinctio cupiditate fugiat suscipit ut placeat odit, reprehenderit, adipisci laudantium praesentium. Quidem architecto earum delectus perspiciatis voluptatibus aperiam illum atque, asperiores fugit reiciendis est ducimus nulla natus porro enim recusandae quam saepe corporis fuga, error dolorem nisi magnam quasi. Maxime, quas culpa perspiciatis explicabo nisi accusamus quam commodi numquam laboriosam, voluptate consequuntur voluptatem nulla ipsum, in deleniti voluptas laudantium. Odio aliquid, quas pariatur dolorem enim tempora. Perspiciatis quidem facere eum eligendi a accusantium iste atque doloribus, ipsa consectetur quia incidunt adipisci aut ut rerum autem soluta quo dolorem enim libero sunt est neque quae numquam. Eum adipisci labore assumenda optio maxime cumque ab consectetur, fuga amet id ut fugiat similique blanditiis error, magni vero eligendi rem tempora ad officia? Sapiente possimus, error laborum pariatur nulla sunt, soluta quo explicabo alias quae dicta cumque accusantium fuga similique harum unde maxime ipsum velit. Facere sequi nihil illo doloribus eligendi, quis iusto! Obcaecati sapiente ad non unde hic error consectetur, minus eligendi sed eum temporibus quia deserunt animi, perspiciatis dolores veniam praesentium officiis. Ipsum dicta, minima reiciendis at eos, mollitia neque veniam illum possimus officia consequuntur sit nostrum, nesciunt libero voluptatem dolores ratione accusamus deleniti in saepe nisi voluptas? Quibusdam aliquid assumenda magni similique praesentium provident veniam blanditiis enim soluta sint illum asperiores placeat velit quaerat nesciunt facilis voluptatum laboriosam, ipsa nisi. Ab sint odio id dolore laboriosam? Dolores velit, eveniet rerum deserunt distinctio recusandae, non officiis excepturi voluptas laboriosam quia possimus omnis enim saepe suscipit vel officia natus? Accusantium porro harum asperiores. Minus sit modi id officia totam ad nostrum illo, quisquam sed voluptates dolorem, accusamus suscipit inventore. Aperiam, id? Eius sunt aperiam quidem tempora rerum culpa ex, quasi magni corporis, ad dicta beatae ullam ut qui exercitationem nisi repellat ducimus itaque quam iure esse molestias ipsum suscipit? Explicabo consequatur voluptas reprehenderit. Modi vitae nobis rem molestias? Impedit, optio veniam? Tempore eligendi iure temporibus odio dolore hic fuga quaerat excepturi veritatis ea ad, fugit architecto sint, repudiandae beatae! Praesentium accusantium delectus eum vero esse error quas a est!</h3>
+  
+</div>
+
+<!-- the stacked fullscreen sections -->
+<div class="section s1">Section 1</div>
+<div class="section s2">Section 2</div>
+<div class="section s3">Section 3</div>
+<div class="section s4">Section 4</div>
+
+<!-- some page content after sections (still present under sections) -->
+<div class="page-content" style="margin-top:120vh;">
+  <h2>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officia laborum quaerat delectus quos quisquam inventore labore eum perspiciatis libero vero nisi, earum, voluptatem distinctio hic pariatur impedit, incidunt vel commodi saepe totam a. Vitae accusamus officiis eligendi laudantium nisi! Quia molestias facilis odit ab. Animi in dolorum asperiores, nostrum vitae ipsa, assumenda reprehenderit voluptatibus minus nemo debitis deserunt consequatur ratione!</h2>
+  <p>This content is reachable visually when all sections are hidden. Sections overlay the page when they appear.</p>
+</div>
+
+
+
+<script>
+  const sections = Array.from(document.querySelectorAll('.section'));
+  // set z-index so later sections appear above earlier ones
+  sections.forEach((s, i) => s.style.zIndex = (i + 1));
+
+  let topVisibleIndex = -1; // -1 means none are visible
+  let isAnimating = false;
+  const DURATION = 750; // match CSS transition (ms)
+
+  function showNext() {
+    if (isAnimating) return;
+    if (topVisibleIndex >= sections.length - 1) return;
+    isAnimating = true;
+    topVisibleIndex++;
+    sections[topVisibleIndex].classList.add('active');
+    setTimeout(() => { isAnimating = false; }, DURATION);
+  }
+
+  function hideTop() {
+    if (isAnimating) return;
+    if (topVisibleIndex < 0) return;
+    isAnimating = true;
+    sections[topVisibleIndex].classList.remove('active');
+    setTimeout(() => {
+      topVisibleIndex--;
+      isAnimating = false;
+    }, DURATION);
+  }
+
+  // wheel handler: show on scroll down, hide on scroll up
+  window.addEventListener('wheel', (e) => {
+    // prevent page default scroll while using wheel to control sections
+    e.preventDefault();
+    if (e.deltaY > 0) {
+      showNext();
+    } else if (e.deltaY < 0) {
+      hideTop();
+    }
+  }, { passive: false });
+
+  // optional: keyboard support (ArrowDown / ArrowUp)
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowDown') { showNext(); }
+    if (e.key === 'ArrowUp') { hideTop(); }
+  });
+
+  // optional: expose touch gesture (basic)
+  let touchStartY = null;
+  window.addEventListener('touchstart', (e) => { touchStartY = e.touches[0].clientY; }, { passive: true });
+  window.addEventListener('touchmove', (e) => {
+    if (!touchStartY) return;
+    const dy = touchStartY - e.touches[0].clientY;
+    if (Math.abs(dy) > 30) {
+      if (dy > 0) showNext(); else hideTop();
+      touchStartY = null;
+    }
+  }, { passive: true });
+
+  /* DEBUG TIP: open devtools console if it's not working and check for JS errors.
+     If you're testing inside an iframe or 3rd-party environment, wheel events or passive flags may behave differently. */
+</script>
+
+</body>
+</html>

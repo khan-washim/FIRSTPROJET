@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Stacked Sections Upward + Scroll Unlock</title>
+<style>
+  html, body {
+    margin: 0; padding: 0; height: 100%;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+    background: #d80c0c;
+    color: white;
+  }
+
+  .page-content {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 40px 20px;
+    line-height: 1.6;
+    background: #111;
+    color: #ddd;
+    position: relative;
+    z-index: 1;
+  }
+
+  .page-content.below {
+    margin-top: 50vh;
+  }
+
+  .section {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 4rem;
+    user-select: none;
+    transform: translateY(100%);
+    opacity: 0;
+    transition: transform 0.6s cubic-bezier(.2,.9,.3,1), opacity 0.4s ease;
+    will-change: transform, opacity;
+  }
+
+  .cards-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+    justify-content: center;
+  }
+
+  .cards {
+    position: relative;
+    overflow: hidden;
+    height: 472px;
+    flex: 0 0 100%;
+    max-width: 100%;
+    cursor: pointer;
+  }
+
+  .hover-text {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Lora', serif;
+    font-weight: 500;
+    font-size: 24px;
+    color: white;
+    padding: 8px 20px;
+    border-radius: 30px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    white-space: nowrap;
+    text-decoration: none;
+    z-index: 20;
+  }
+
+  .cards:hover .hover-text {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .hover-text a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: 600;
+  }
+  .hover-text a:hover {
+    text-decoration: underline;
+  }
+
+  @media (min-width: 576px) {
+    .cards { flex: 0 0 50%; max-width: 50%; }
+  }
+  @media (min-width: 992px) {
+    .cards { flex: 0 0 25%; max-width: 25%; }
+  }
+
+  .cards img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+  }
+  .cards:hover img {
+    transform: scale(1.05);
+  }
+
+  .caption {
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    padding: 10px 12px;
+    text-align: center;
+    font-weight: 400;
+    font-size: 16px;
+    background: #fff;
+    color: #111010;
+    z-index: 10;
+  }
+
+  .s1 { background: #1abc9c; z-index: 10; }
+  .s2 { background: #3498db; z-index: 20; }
+  .s3 { background: #9b59b6; z-index: 30; }
+  .s4 { background: #e74c3c; z-index: 40; }
+
+  .section.active {
+    transform: translateY(0);
+    opacity: 1;
+  }
+</style>
+</head>
+<body>
+
+<div class="page-content">
+  <h3>Intro content above stacked sections</h3>
+  <p>Scroll your mouse wheel down to reveal stacked sections one by one, each appearing on top of previous.</p>
+</div>
+
+<!-- Section 1 -->
+<div class="section s1">
+  <div class="cards-row">
+    <div class="cards">
+      <img src="Frame 10.png" alt="Image 1" />
+      <div class="hover-text"><a href="#">For Him</a> | <a href="#">For Her</a></div>
+      <div class="caption">JACKET</div>
+    </div>
+    <div class="cards">
+      <img src="Rectangle 5 (7).png" alt="Image 2" />
+      <div class="hover-text"><a href="#">For Him</a> | <a href="#">For Her</a></div>
+      <div class="caption">LEATHER BAGS</div>
+    </div>
+    <div class="cards">
+      <img src="Rectangle 6 (12).png" alt="Image 3" />
+      <div class="hover-text"><a href="#">For Him</a> | <a href="#">For Her</a></div>
+      <div class="caption">BELT</div>
+    </div>
+    <div class="cards">
+      <img src="Rectangle 5 (7).png" alt="Image 4" />
+      <div class="hover-text"><a href="#">For Him</a> | <a href="#">For Her</a></div>
+      <div class="caption">FOOTWARE</div>
+    </div>
+  </div>
+</div>
+
+<!-- Section 2 -->
+<div class="section s2">
+  <div class="cards-row">
+    <div class="cards">
+      <img src="Frame 10.png" alt="Image 1" />
+      <div class="hover-text"><a href="#">For Him</a> | <a href="#">For Her</a></div>
+      <div class="caption">JACKET</div>
+    </div>
+    <div class="cards">
+      <img src="Rectangle 5 (7).png" alt="Image 2" />
+      <div class="hover-text"><a href="#">For Him</a> | <a href="#">For Her</a></div>
+      <div class="caption">LEATHER BAGS</div>
+    </div>
+    <div class="cards">
+      <img src="Rectangle 6 (12).png" alt="Image 3" />
+      <div class="hover-text"><a href="#">For Him</a> | <a href="#">For Her</a></div>
+      <div class="caption">BELT</div>
+    </div>
+    <div class="cards">
+      <img src="Rectangle 5 (7).png" alt="Image 4" />
+      <div class="hover-text"><a href="#">For Him</a> | <a href="#">For Her</a></div>
+      <div class="caption">FOOTWARE</div>
+    </div>
+  </div>
+</div>
+
+<!-- Section 3 -->
+<div class="section s3">
+  <div class="cards-row">
+    <div class="cards">
+      <img src="Frame 10.png" alt="Image 1" />
+      <div class="hover-text"><a href="#">For Him</a> | <a href="#">For Her</a></div>
+      <div class="caption">JACKET</div>
+    </div>
+    <div class="cards">
+      <img src="Rectangle 5 (7).png" alt="Image 2" />
+      <div class="hover-text"><a href="#">For Him</a> | <a href="#">For Her</a></div>
+      <div class="caption">LEATHER BAGS</div>
+    </div>
+    <div class="cards">
+      <img src="Rectangle 6 (12).png" alt="Image 3" />
+      <div class="hover-text"><a href="#">For Him</a> | <a href="#">For Her</a></div>
+      <div class="caption">BELT</div>
+    </div>
+    <div class="cards">
+      <img src="Rectangle 5 (7).png" alt="Image 4" />
+      <div class="hover-text"><a href="#">For Him</a> | <a href="#">For Her</a></div>
+      <div class="caption">FOOTWARE</div>
+    </div>
+  </div>
+</div>
+
+<!-- Section 4 -->
+<div class="section s4">
+  <div class="cards-row">
+    <div class="cards">
+      <img src="Frame 10.png" alt="Image 1" />
+      <div class="hover-text"><a href="#">For Him</a> | <a href="#">For Her</a></div>
+      <div class="caption">JACKET</div>
+    </div>
+    <div class="cards">
+      <img src="Rectangle 5 (7).png" alt="Image 2" />
+      <div class="hover-text"><a href="#">For Him</a> | <a href="#">For Her</a></div>
+      <div class="caption">LEATHER BAGS</div>
+    </div>
+    <div class="cards">
+      <img src="Rectangle 6 (12).png" alt="Image 3" />
+      <div class="hover-text"><a href="#">For Him</a> | <a href="#">For Her</a></div>
+      <div class="caption">BELT</div>
+    </div>
+    <div class="cards">
+      <img src="Rectangle 5 (7).png" alt="Image 4" />
+      <div class="hover-text"><a href="#">For Him</a> | <a href="#">For Her</a></div>
+      <div class="caption">FOOTWARE</div>
+    </div>
+  </div>
+</div>
+
+<div class="page-content below">
+  <h2>Page content after sections</h2>
+  <p>After all sections are hidden, normal scroll resumes.</p>
+  <p>Add more content to test scrolling...</p>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+  <p>More content here...</p>
+  <p>More content here...</p>
+  <p>More content here...</p>
+  <p>More content here...</p>
+</div>
+
+<script>
+const sections = Array.from(document.querySelectorAll('.section'));
+let current = -1;
+let animating = false;
+const ANIM_DUR = 600;
+
+function showNext() {
+  if (animating) return;
+  if (current >= sections.length - 1) return;
+  animating = true;
+  current++;
+  sections[current].classList.add('active');
+  setTimeout(() => animating = false, ANIM_DUR);
+}
+
+function hidePrev() {
+  if (animating) return;
+  if (current < 0) return;
+  animating = true;
+  sections[current].classList.remove('active');
+  current--;
+  setTimeout(() => animating = false, ANIM_DUR);
+}
+
+// Mouse wheel
+window.addEventListener('wheel', e => {
+  if (current < sections.length - 1 || current >= 0) {
+    e.preventDefault();
+    if (e.deltaY > 0) showNext();
+    else if (e.deltaY < 0) hidePrev();
+  }
+}, { passive: false });
+
+// Keyboard arrows
+window.addEventListener('keydown', e => {
+  if (e.key === 'ArrowDown') showNext();
+  if (e.key === 'ArrowUp') hidePrev();
+});
+
+// Touch support
+let touchStartY = null;
+window.addEventListener('touchstart', e => { touchStartY = e.touches[0].clientY; }, { passive: true });
+window.addEventListener('touchmove', e => {
+  if (touchStartY === null) return;
+  const dy = touchStartY - e.touches[0].clientY;
+  if (Math.abs(dy) > 30) {
+    if (dy > 0) showNext(); else hidePrev();
+    touchStartY = null;
+  }
+}, { passive: true });
+</script>
+
+</body>
+</html>
