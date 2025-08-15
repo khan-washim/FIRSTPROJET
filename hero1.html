@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hero Image Split Animation</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+<style>
+  body, html {
+    margin: 0; padding: 0;
+    overflow-x: hidden;
+  }
+  .hero-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    height: 800px; /* Adjust as needed */
+    margin: 50px auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 0;
+  }
+  .hero-part {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  .hero-part img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  /* Custom AOS animations for corners */
+  .from-top-left {
+    transform: translate(-100%, -100%);
+  }
+  .from-top-right {
+    transform: translate(100%, -100%);
+  }
+  .from-bottom-left {
+    transform: translate(-100%, 100%);
+  }
+  .from-bottom-right {
+    transform: translate(100%, 100%);
+  }
+
+  .aos-animate {
+    transform: translate(0,0) !important;
+  }
+</style>
+</head>
+<body>
+
+<div class="hero-container">
+  <div class="hero-part" data-aos="custom" data-aos-class="from-top-left">
+    <img src="hero1.png" alt="Hero Part 1">
+  </div>
+  <div class="hero-part" data-aos="custom" data-aos-class="from-top-right">
+    <img src="hero2.png" alt="Hero Part 2">
+  </div>
+  <div class="hero-part" data-aos="custom" data-aos-class="from-bottom-left">
+    <img src="hero3.png" alt="Hero Part 3">
+  </div>
+  <div class="hero-part" data-aos="custom" data-aos-class="from-bottom-right">
+    <img src="hero4.png" alt="Hero Part 4">
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 1000,
+    easing: 'ease-out',
+    once: true
+  });
+
+  // Custom AOS handler
+  document.querySelectorAll('[data-aos="custom"]').forEach(el => {
+    const startClass = el.dataset.aosClass;
+    el.classList.add(startClass);
+    setTimeout(() => {
+      el.classList.add('aos-animate');
+    }, 50);
+  });
+</script>
+
+</body>
+</html>
