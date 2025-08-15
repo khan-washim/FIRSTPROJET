@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Full Width 4 Image Row - ZigZag Zoom</title>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&display=swap" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@500&display=swap" rel="stylesheet" />
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin:0; padding:0; overflow-x:hidden !important; scroll-behavior:smooth; }
+  body { font-family:'Merriweather', serif; background:#fff; }
+
+  .section-heading { margin-top:3rem; margin-bottom:2rem; text-align:center; overflow:hidden; }
+  .section-heading .title {
+    font-family:'Lora', serif; font-weight:500; font-size:36px; margin-bottom:0.5rem;
+  }
+  .section-heading .subtitle {
+    font-family:'Merriweather', serif; font-weight:300; font-size:16px;
+    display:flex; justify-content:center; align-items:center; gap:12px;
+  }
+  .subtitle::before, .subtitle::after { content:""; flex:0 0 48px; height:1px; background:#666; }
+
+  .cards-row { display:flex; flex-wrap:wrap; gap:0; justify-content:center; overflow:hidden; }
+
+  .cards {
+    position:relative; overflow:hidden; height:472px; flex:0 0 100%; max-width:100%; cursor:pointer;
+  }
+  @media (min-width:576px){ .cards { flex:0 0 50%; max-width:50%; } }
+  @media (min-width:992px){ .cards { flex:0 0 25%; max-width:25%; } }
+
+  .cards img { width:100%; height:100%; object-fit:cover; display:block; transition: transform 0.8s ease; }
+  .cards:hover img { transform: scale(1.05); }
+
+  .caption { position:absolute; left:0; right:0; bottom:0; padding:10px 12px; text-align:center; font-weight:400; font-size:16px; background:#fff; color:#111010; z-index:10; }
+
+  .hover-text {
+    position:absolute; top:45%; left:50%; transform:translate(-50%, -50%) translateY(20px);
+    font-family:'Lora', serif; font-weight:500; font-size:24px; color:white;
+    padding:8px 20px; opacity:0; pointer-events:none; transition:all 0.4s ease; white-space:nowrap; z-index:20;
+  }
+  .cards:hover .hover-text { opacity:1; transform:translate(-50%, -50%) translateY(0); }
+  .hover-text a { color:#fff; text-decoration:none; margin:0 10px; font-weight:600; }
+  .hover-text a:hover { text-decoration:underline; }
+
+  /* Titles/Subtitles Animation */
+  .animate-left { opacity:0; transform:translateX(-60px); transition: all 0.8s ease-out; }
+  .animate-right { opacity:0; transform:translateX(60px); transition: all 0.8s ease-out; }
+  .animate-left.aos-animate, .animate-right.aos-animate { opacity:1; transform:translateX(0); }
+
+</style>
+</head>
+<body>
+
+<div>
+  <!-- NEW ARRIVAL -->
+  <div class="section-heading">
+    <div class="title animate-left" data-aos="fade-right">NEW ARRIVAL</div>
+    <div class="subtitle animate-right" data-aos="fade-left">BINDAZZ</div>
+  </div>
+  <div class="cards-row">
+    <div class="cards" data-aos="zoom-in-up"><img src="Frame 10.png" alt="Image 1"><div class="hover-text"><a href="#">For Him</a> | <a href="#">For Her</a></div><div class="caption">JACKET</div></div>
+    <div class="cards" data-aos="zoom-in-down"><img src="Rectangle 5 (7).png" alt="Image 2"><div class="hover-text"><a href="#">For Him</a> | <a href="#">For Her</a></div><div class="caption">LEATHER BAGS</div></div>
+    <div class="cards" data-aos="zoom-in-up"><img src="Rectangle 6 (12).png" alt="Image 3"><div class="hover-text"><a href="#">For Him</a> | <a href="#">For Her</a></div><div class="caption">BELT</div></div>
+    <div class="cards" data-aos="zoom-in-down"><img src="Rectangle 5 (7).png" alt="Image 4"><div class="hover-text"><a href="#">For Him</a> | <a href="#">For Her</a></div><div class="caption">FOOTWARE</div></div>
+  </div>
+
+  <!-- ON SALE -->
+  <div class="section-heading">
+    <div class="title animate-left" data-aos="fade-right">ON SALE</div>
+    <div class="subtitle animate-right" data-aos="fade-left">BINDAZZ</div>
+  </div>
+  <div class="cards-row">
+    <div class="cards" data-aos="zoom-in-up"><img src="Frame 10.png" alt="Image 1"><div class="hover-text"><a href="#">For Him</a> | <a href="#">For Her</a></div><div class="caption">JACKET</div></div>
+    <div class="cards" data-aos="zoom-in-down"><img src="Rectangle 6 (12).png" alt="Image 2"><div class="hover-text"><a href="#">For Him</a> | <a href="#">For Her</a></div><div class="caption">LEATHER BAGS</div></div>
+    <div class="cards" data-aos="zoom-in-up"><img src="Rectangle 5 (7).png" alt="Image 3"><div class="hover-text"><a href="#">For Him</a> | <a href="#">For Her</a></div><div class="caption">BELT</div></div>
+    <div class="cards" data-aos="zoom-in-down"><img src="Frame 10.png" alt="Image 4"><div class="hover-text"><a href="#">For Him</a> | <a href="#">For Her</a></div><div class="caption">FOOTWARE</div></div>
+  </div>
+
+  <!-- TRENDING -->
+  <div class="section-heading">
+    <div class="title animate-left" data-aos="fade-right">TRENDING</div>
+    <div class="subtitle animate-right" data-aos="fade-left">BINDAZZ</div>
+  </div>
+  <div class="cards-row">
+    <div class="cards" data-aos="zoom-in-up"><img src="Rectangle 5 (7).png" alt="Image 1"><div class="hover-text"><a href="#">For Him</a> | <a href="#">For Her</a></div><div class="caption">JACKET</div></div>
+    <div class="cards" data-aos="zoom-in-down"><img src="Frame 10.png" alt="Image 2"><div class="hover-text"><a href="#">For Him</a> | <a href="#">For Her</a></div><div class="caption">LEATHER BAGS</div></div>
+    <div class="cards" data-aos="zoom-in-up"><img src="Rectangle 6 (12).png" alt="Image 3"><div class="hover-text"><a href="#">For Him</a> | <a href="#">For Her</a></div><div class="caption">BELT</div></div>
+    <div class="cards" data-aos="zoom-in-down"><img src="Rectangle 5 (7).png" alt="Image 4"><div class="hover-text"><a href="#">For Him</a> | <a href="#">For Her</a></div><div class="caption">FOOTWARE</div></div>
+  </div>
+</div>
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+AOS.init({ duration:800, once:true, easing:'ease-in-out' });
+</script>
+</body>
+</html>
