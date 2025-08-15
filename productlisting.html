@@ -47,14 +47,123 @@ html, body {
   object-fit: cover;
   display: block;
 }
-.category-img {
-   
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block; /* avoids small gaps under images */
-}
+  .section-heading .title {
+    font-family: 'Lora', serif;
+    font-weight: 500;
+    font-size: 36px;
+    text-align: center;
+    margin-top: 3rem;
+  }
+  .section-heading .subtitle {
+    font-family: 'Merriweather', serif;
+    font-weight: 300;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 1rem;
+  }
+  .subtitle::before,
+  .subtitle::after {
+    content: "";
+    flex: 0 0 48px;
+    height: 1px;
+    background-color: #666;
+    display: block;
+  }
+  
+  .cards-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+    justify-content: center;
+  }
 
+  /* Responsive card sizes */
+  .cards {
+    position: relative;
+    overflow: hidden;
+    height: 472px;
+    flex: 0 0 100%;
+    max-width: 100%;
+    cursor: pointer;
+  }
+  @media (min-width: 576px) {
+    .cards {
+      flex: 0 0 50%;
+      max-width: 50%;
+    }
+  }
+  @media (min-width: 992px) {
+    .cards {
+      flex: 0 0 25%;
+      max-width: 25%;
+    }
+  }
+
+  .cards img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+  }
+  
+  /* Zoom image on hover */
+  .cards:hover img {
+    transform: scale(1.05);
+  }
+
+  .caption {
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    padding: 10px 12px;
+    text-align: center;
+    font-weight: 400;
+    font-size: 16px;
+    background: #fff;
+    color: #111010;
+    z-index: 10;
+  }
+
+  /* Hover text overlay */
+  .hover-text {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Lora', serif;
+    font-weight: 500;
+    font-size: 24px;
+    color: white;
+    
+    padding: 8px 20px;
+    border-radius: 30px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    white-space: nowrap;
+    text-decoration: none;
+    z-index: 20;
+  }
+  
+  /* Show hover-text on card hover */
+  .cards:hover .hover-text {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* Style anchor inside hover-text */
+  .hover-text a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: 600;
+  }
+  .hover-text a:hover {
+    text-decoration: underline;
+  }
 
 .language span, .currency span {
   font-family: 'Inter', sans-serif; font-weight: 400; font-size: 16px;
@@ -215,7 +324,7 @@ nav.navbars {
 }
 @media (max-width: 320px) {
   .language-currency {
-    gap: 2px; /* reduce spacing */
+    gap: 0; /* reduce spacing */
     flex-wrap: nowrap; /* prevent breaking into 2 lines */
     min-width: 0; /* allow shrink */
   }
@@ -345,50 +454,77 @@ submenuToggle.addEventListener("click", function(e) {
 </div>
 
 <!-- Products Grid -->
-<div  >
-  <div class="row g-0"> <!-- g-0 removes all gutters -->
-  <div class="col-6 col-md-3">
-    <img src="Frame 37 (1).png" alt="Product 1" class="product-img">
+<div class="cards-row">
+    <div class="cards">
+      <img src="Frame 10.png" alt="Image 1" /> 
+    </div>
+    <div class="cards">
+      <img src="Rectangle 5 (7).png" alt="Image 2" /> 
+    </div>
+    <div class="cards">
+      <img src="Rectangle 6 (12).png" alt="Image 3" />
+    </div>
+    <div class="cards">
+      <img src="Rectangle 5 (7).png" alt="Image 4" />
+    </div>
   </div>
-  <div class="col-6 col-md-3">
-    <img src="Frame 39 (1).png" alt="Product 2" class="product-img">
+ <div class="cards-row">
+    <div class="cards">
+      <img src="Frame 10.png" alt="Image 1" /> 
+    </div>
+    <div class="cards">
+      <img src="Rectangle 5 (7).png" alt="Image 2" /> 
+    </div>
+    <div class="cards">
+      <img src="Rectangle 6 (12).png" alt="Image 3" />
+    </div>
+    <div class="cards">
+      <img src="Rectangle 5 (7).png" alt="Image 4" />
+    </div>
   </div>
-  <div class="col-6 col-md-3">
-    <img src="Frame 40.png" alt="Product 3" class="product-img">
-  </div>
-  <div class="col-6 col-md-3">
-    <img src="Frame 10.png" alt="Product 4" class="product-img">
-  </div>
-
-  <div class="col-6 col-md-3">
-    <img src="Frame 37 (1).png" alt="Product 5" class="product-img">
-  </div>
-  <div class="col-6 col-md-3">
-    <img src="Frame 39 (1).png" alt="Product 6" class="product-img">
-  </div>
-  <div class="col-6 col-md-3">
-    <img src="Frame 40.png" alt="Product 7" class="product-img">
-  </div>
-  <div class="col-6 col-md-3">
-    <img src="Frame 10.png" alt="Product 8" class="product-img">
-  </div>
-</div>
-
   <div class="text-center my-3">
     <button class="btn btn-dark">Load more</button>
   </div>
 </div>
 
 <!-- Top Categories -->
-<div class="row g-0 ">
-  <h2 class="mb-4 text-center">TOP CATEGORIES</h2>
-  <div class="row g-0">
-    <div class="col-6 col-md-3"><img src="Rectangle 5 (7).png" alt="Jacket" class="category-img"><p>JACKET</p></div>
-    <div class="col-6 col-md-3"><img src="Rectangle 6 (12).png" alt="Leather Bags" class="category-img"><p>LEATHER BAGS</p></div>
-    <div class="col-6 col-md-3"><img src="Rectangle 5 (7).png" alt="Belt" class="category-img"><p>BELT</p></div>
-    <div class="col-6 col-md-3"><img src="Rectangle 6 (12).png" alt="Footware" class="category-img"><p>FOOTWARE</p></div>
+<div class="section-heading">
+    <div class="title">NEW ARRIVAL</div>
+    <div class="subtitle">BINDAZZ</div>
   </div>
-</div>
+
+  <!-- 4 Image Row -->
+  <div class="cards-row">
+    <div class="cards">
+      <img src="Frame 10.png" alt="Image 1" />
+      <div class="hover-text">
+        <a href="#">For Him</a> | <a href="#">For Her</a>
+      </div>
+      <div class="caption">JACKET</div>
+    </div>
+    <div class="cards">
+      <img src="Rectangle 5 (7).png" alt="Image 2" />
+      <div class="hover-text">
+        <a href="#">For Him</a> | <a href="#">For Her</a>
+      </div>
+      <div class="caption">LEATHER BAGS</div>
+    </div>
+    <div class="cards">
+      <img src="Rectangle 6 (12).png" alt="Image 3" />
+      <div class="hover-text">
+        <a href="#">For Him</a> | <a href="#">For Her</a>
+      </div>
+      <div class="caption">BELT</div>
+    </div>
+    <div class="cards">
+      <img src="Rectangle 5 (7).png" alt="Image 4" />
+      <div class="hover-text">
+        <a href="#">For Him</a> | <a href="#">For Her</a>
+      </div>
+      <div class="caption">FOOTWARE</div>
+    </div>
+  </div>
+
 <!-- Footer -->
 <footer>
   <div class="container">
